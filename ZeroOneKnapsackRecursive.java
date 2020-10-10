@@ -9,7 +9,6 @@ class ZeroOneKnapsackRecursive {
 
 	static int findMaxProfit(int[] weights, int[] values, int i, int cap) {
 		if (i < 0 || cap == 0) {
-			//System.out.println("Base case, returning 0");
 			return 0;
 		}
 		int p1 = 0;
@@ -17,16 +16,11 @@ class ZeroOneKnapsackRecursive {
 
 		// pick 
 		if (cap - weights[i] >= 0) {
-			//System.out.println("Making recursive call with i as: " + i-1 + " and cap as: " + cap-weights[i]);
 			p1 = values[i] + findMaxProfit(weights, values, i-1, cap-weights[i]);
 		}
-		else {
-			//System.out.println("cap - weights[i] < 0; not making recursive call");
-		}
 		// no pick
-		//System.out.println("Making recursive call with i as: " + i-1 + " and cap as: " + cap);
 		p2 = findMaxProfit(weights, values, i-1, cap);
-		//System.out.println("Value of p2 after recursive call is" + p2);
+
 		return Math.max(p1, p2);
 	}
 }
